@@ -1,0 +1,11 @@
+set search_path to purchase;
+insert into Dealer_detail values('200601011030','Gajju bhai','09556863292','Endore');
+insert into Dealer_detail values('200603010920','Kailash ji','08976485897','Chattishgarh');
+insert into Dealer_detail values('200605011040','Hussain bhai','09571698246','Lakhnow');
+insert into Dealer_detail values('200607020150','R.k.tiwari','09574589612','Bhopal');
+insert into Dealer_detail values('200612101245','Raju bhai','09829658940','Pune');
+insert into Dealer_detail values('200703011110','Chandu','09865986412','Mumbai');
+insert into Dealer_detail values('200704050930','Mukesh ji','0854784658','Ahemdabad');
+insert into Dealer_detail values('200706201050','Jay bhai','08596468732','Gandhinagar');
+insert into Dealer_detail values('200707061220','Vikash bhai','09687658943','Rajkot');
+insert into Dealer_detail values('200709151115','Manu bhai','954579654','delhi');

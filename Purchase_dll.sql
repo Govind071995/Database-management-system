@@ -1,0 +1,66 @@
+﻿--***** purchase dll ****
+
+SET search_path TO purchase;
+
+create table Dealer_detail(
+  Ac_No varchar(20) primary key,
+  name varchar(20),
+  phone_number varchar(13),
+  Address varchar(200)
+ );
+
+create table Purchase_Order(
+  P_id varchar(20) primary key,
+  Date_of_order date,
+  Ac_no varchar(20),
+  foreign key(Ac_no) references Dealer_detail(Ac_no)
+ );
+
+create table Item_Detail(
+  I_id varchar(20) primary key,
+  Item_name varchar(20),
+  Specification varchar(500)
+ );
+
+
+create table Item(
+  P_id varchar(20),
+  I_id varchar(20) references Item_detail(I_id),
+  qty_in_number integer,
+  qty numeric(8,3),
+  rate numeric(8,3),
+  Additional_charge numeric(13,3),
+  specification_of_additional_charge varchar(500),
+  primary key(P_id,I_id),
+  foreign key(P_id) references Purchase_Order(P_id)
+  --foreign key(I_id) references Item_Detail(I_id)
+ );
+
+
+create table Receival(
+  P_id varchar(20) references Purchase_Order(P_id),
+  I_id varchar(20) references Item_detail(I_id),
+  seq_of_receival integer,
+  Date_of_receival date,
+  qty_in_number integer,
+  qty numeric(8,3),
+  primary key(P_id,I_id,seq_of_receival,Date_of_receival)
+ );
+
+create table Payment_detail(
+  Ac_no varchar(20) references Dealer_detail(Ac_no),
+  Date_of_payment date,
+  Amount numeric(13,3),
+  Payment_seq_of_day integer,
+  commnt varchar(500),
+  primary key(Ac_no,Date_of_payment,Payment_seq_of_day)
+ );
+
+create table Transportation(
+  Transportation_charge numeric(7),
+  Date_of_receival date,
+  seq_of_receival integer,
+  P_id varchar(20) references Purchase_Order(P_id),
+  Source_Adderess varchar(200),
+  praimary key(Date_of_receival,seq_of_receival,P_id)
+ );
